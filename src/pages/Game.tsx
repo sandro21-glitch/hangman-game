@@ -1,9 +1,5 @@
-
-
 const Game = () => {
-  return (
-    <section>Game</section>
-  )
-}
+  return <section>Game</section>;
+};
 
-export default Game
+export default Game;
