@@ -1,9 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import useSound from "../../hooks/useSound";
 
 const HowToPlayBtn = () => {
   const { playSound } = useSound();
+  const navigate = useNavigate();
   const handleClickButton = () => {
     playSound();
+    navigate("/how");
   };
   return (
     <button
