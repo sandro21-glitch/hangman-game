@@ -99,7 +99,7 @@ h5 {
 
 .section-center {
   width: 90vw;
-  max-width: 1200px;
+  max-width: 85rem;
   margin: 0 auto;
 }
 .gradient-bg {
@@ -108,6 +108,13 @@ h5 {
 
 .button-gradient {
   background: linear-gradient(180deg, #fe71fe, #7199ff);
+}
+.title-gradient {
+  background: linear-gradient(180deg, #67b6ff 16.42%, #fff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
 }
 
 .inset--1 {
