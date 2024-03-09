@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import hangmanReducer from "./features/hangman/hangmanSlice";
+import hangmanReducer from "./features/game/hangmanSlice";
 export const store = configureStore({
   reducer: {
     game: hangmanReducer,
