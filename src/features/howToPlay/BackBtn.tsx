@@ -15,7 +15,11 @@ const BackBtn = () => {
     cursor-pointer outline-none border-none
   "
     >
-      <img src={backLogo} alt="back icon" className="bg-none w-[1.5rem] h-[1.5rem] md:w-auto md:h-auto" />
+      <img
+        src={backLogo}
+        alt="back icon"
+        className="bg-none w-[1.5rem] h-[1.5rem] md:w-auto md:h-auto"
+      />
     </button>
   );
 };
