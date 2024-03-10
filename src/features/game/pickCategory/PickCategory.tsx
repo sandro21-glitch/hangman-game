@@ -1,11 +1,16 @@
 import Header from "../../../ui/Header";
 import CategoriesList from "./CategoriesList";
 
-const PickCategory = () => {
+type PickCategoryProps = {
+  setGameBegin: React.Dispatch<
+    React.SetStateAction<{ start: boolean; category: string }>
+  >;
+};
+const PickCategory = ({ setGameBegin }: PickCategoryProps) => {
   return (
     <article className="section-center-game">
       <Header text="pick a categories" />
-      <CategoriesList />
+      <CategoriesList setGameBegin={setGameBegin} />
     </article>
   );
 };
