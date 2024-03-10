@@ -1,8 +1,11 @@
+import GameHeader from "./GameHeader";
 
 const GamePage = () => {
   return (
-    <div>GamePage</div>
-  )
-}
+    <article className="section-center-game">
+      <GameHeader />
+    </article>
+  );
+};
 
-export default GamePage
+export default GamePage;
