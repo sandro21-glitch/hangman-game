@@ -1,12 +1,21 @@
 import { useAppSelector } from "../../../hooks";
+type CategoriesListProps = {
+  setGameBegin: React.Dispatch<
+    React.SetStateAction<{ start: boolean; category: string }>
+  >;
+};
 
-const CategoriesList = () => {
+const CategoriesList = ({ setGameBegin }: CategoriesListProps) => {
   const { categoryNames } = useAppSelector((store) => store.game);
+  const handleCategoryClick = (category: string) => {
+    setGameBegin((prev) => ({ ...prev, category: category, start: true }));
+  };
   return (
     <ul className="mt-10 flex flex-col md:flex-row items-center justify-center flex-wrap gap-5">
       {categoryNames.map((category, index) => {
         return (
           <li
+            onClick={() => handleCategoryClick(category)}
             key={index}
             className="md:max-w-[384px] w-full min-h-[64px] h-fit md:h-[190px] p-5 cursor-pointer border-none rounded-[35px] bg-primary-blue 
             text-center text-white text-[1.5rem] md:text-[2.7rem] inset--3 flex justify-center items-center tracking-wider relative
