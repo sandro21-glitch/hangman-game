@@ -1,4 +1,5 @@
-import { useAppSelector } from "../../../hooks";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { setActiveCategoryList } from "../hangmanSlice";
 type CategoriesListProps = {
   setGameBegin: React.Dispatch<
     React.SetStateAction<{ start: boolean; category: string }>
@@ -6,8 +7,10 @@ type CategoriesListProps = {
 };
 
 const CategoriesList = ({ setGameBegin }: CategoriesListProps) => {
+  const dispatch = useAppDispatch();
   const { categoryNames } = useAppSelector((store) => store.game);
   const handleCategoryClick = (category: string) => {
+    dispatch(setActiveCategoryList(category));
     setGameBegin((prev) => ({ ...prev, category: category, start: true }));
   };
   return (
