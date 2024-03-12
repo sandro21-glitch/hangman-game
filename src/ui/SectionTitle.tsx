@@ -1,12 +1,13 @@
-type SectionTitleTypes = {
+type SectionTitleProps = {
   text: string;
 };
-const SectionTitle = ({ text }: SectionTitleTypes) => {
+
+const SectionTitle = ({ text }: SectionTitleProps) => {
   return (
     <h1
-      className="text-center mx-auto text-[3.5rem] md:text-[5rem] lg:text-[8rem] title-gradient 
-    font-bold tracking-wider
-    "
+      style={{ textTransform: "uppercase" }}
+      className="title"
+      data-text={text}
     >
       {text}
     </h1>
