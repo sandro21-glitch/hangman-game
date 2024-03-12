@@ -2,11 +2,15 @@ import GameHeader from "./GameHeader";
 import LettersBoard from "./LettersBoard";
 import Word from "./Word";
 
-const GamePage = () => {
+type GamePageTypes = {
+  categoryIndex: number;
+};
+
+const GamePage = ({ categoryIndex }: GamePageTypes) => {
   return (
     <article className="section-center-game">
       <GameHeader />
-      <Word />
+      <Word categoryIndex={categoryIndex} />
       <LettersBoard />
     </article>
   );
