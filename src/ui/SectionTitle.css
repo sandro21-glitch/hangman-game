@@ -1,0 +1,24 @@
+.title {
+  background: linear-gradient(180deg, #67b6ff 16.42%, #fff);
+  -webkit-background-clip: text;
+  position: relative;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 3px;
+  font-size: 8rem;
+}
+
+.title::before {
+  content: attr(data-text);
+  left: 0;
+  right: 0;
+  position: absolute;
+  -webkit-text-stroke-width: 15px;
+  -webkit-text-stroke-color: #243041;
+  z-index: -1;
+}
