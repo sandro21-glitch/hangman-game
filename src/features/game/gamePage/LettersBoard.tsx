@@ -31,7 +31,7 @@ const LettersBoard = () => {
               text-[3rem] font-medium  cursor-pointer transition-colors ease-in duration-150
               ${
                 isDisabled(a)
-                  ? "opacity-50 cursor-default"
+                  ? "opacity-50 cursor-not-allowed"
                   : "hover:bg-primary-blue hover:text-white "
               }`}
           >
