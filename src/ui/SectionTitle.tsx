@@ -1,3 +1,4 @@
+import "./SectionTitle.css";
 type SectionTitleProps = {
   text: string;
 };
