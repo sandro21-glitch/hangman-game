@@ -14,7 +14,7 @@ const Word = ({ categoryIndex }: WordTypes) => {
     const words = word.split(" ");
 
     return (
-      <div className="mt-[3rem] mb-[5rem] flex justify-center flex-wrap items-center">
+      <>
         {words.map((wordPart, index) => (
           <div key={index} className="flex mr-[7rem]">
             {wordPart.split("").map((char, charIndex) => {
@@ -35,7 +35,7 @@ const Word = ({ categoryIndex }: WordTypes) => {
             })}
           </div>
         ))}
-      </div>
+      </>
     );
   };
 
