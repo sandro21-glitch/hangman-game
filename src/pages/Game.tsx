@@ -9,6 +9,7 @@ const Game = () => {
   const [gameBegin, setGameBegin] = useState({ start: false, category: "" });
   const [categoryIndex, setCategoryIndex] = useState<number>(0);
   const { activeCategory } = useAppSelector((store) => store.game);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   useEffect(() => {
     if (activeCategory && activeCategory.length > 0) {
       const randomIndex = Math.floor(Math.random() * activeCategory.length);
@@ -21,9 +22,11 @@ const Game = () => {
       {!gameBegin.start ? (
         <PickCategory setGameBegin={setGameBegin} />
       ) : (
-        <GamePage categoryIndex={categoryIndex} />
+        <GamePage categoryIndex={categoryIndex} setIsMenuOpen={setIsMenuOpen} />
       )}
-      <Menu />
+      {isMenuOpen && (
+        <Menu setIsMenuOpen={setIsMenuOpen} setGameBegin={setGameBegin} />
+      )}
       <PageOverlay />
     </section>
   );
