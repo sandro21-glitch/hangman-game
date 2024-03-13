@@ -28,11 +28,11 @@ const LettersBoard = () => {
             key={index}
             className={`w-[7rem] h-[5rem] bg-white rounded-[1rem]
              flex justify-center items-center text-[#261676]
-              text-[3rem] font-medium  cursor-pointer transition-colors ease-in duration-150
+              text-[3rem] font-medium  transition-colors ease-in duration-150
               ${
                 isDisabled(a)
                   ? "opacity-50 cursor-not-allowed"
-                  : "hover:bg-primary-blue hover:text-white "
+                  : "hover:bg-primary-blue hover:text-white cursor-pointer"
               }`}
           >
             {a}
