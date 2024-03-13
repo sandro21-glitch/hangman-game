@@ -39,9 +39,14 @@ export const counterSlice = createSlice({
     setClickedChar: (state, action: PayloadAction<string>) => {
       state.usedChars.push(action.payload);
     },
+    resetGame: (state) => {
+      state.activeCategory = [];
+      state.usedChars = [];
+    },
   },
 });
 
-export const { setActiveCategoryList, setClickedChar } = counterSlice.actions;
+export const { setActiveCategoryList, setClickedChar, resetGame } =
+  counterSlice.actions;
 
 export default counterSlice.reducer;

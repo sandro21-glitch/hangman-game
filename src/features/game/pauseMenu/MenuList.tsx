@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../../hooks";
+import { resetGame } from "../hangmanSlice";
 
 type MenuListTypes = {
   setIsMenuOpen: (isOpen: boolean) => void;
@@ -6,13 +8,16 @@ type MenuListTypes = {
 };
 
 const MenuList = ({ setIsMenuOpen, setGameBegin }: MenuListTypes) => {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const handleQuitGame = () => {
     navigate("/");
+    dispatch(resetGame());
   };
   const handleResetGame = () => {
     setGameBegin({ start: false, category: "" });
     setIsMenuOpen(false);
+    dispatch(resetGame());
   };
 
   return (
