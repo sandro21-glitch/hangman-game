@@ -9,7 +9,6 @@ const Word = ({ categoryIndex }: WordTypes) => {
   const word = activeCategory[categoryIndex].name;
 
   const chars = usedChars.map((char) => char.toLowerCase());
-  console.log(word);
 
   const renderWord = () => {
     const words = word.split(" ");
