@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import PickCategory from "../features/game/pickCategory/PickCategory";
 import GamePage from "../features/game/gamePage/GamePage";
 import { useAppSelector } from "../hooks";
+import PageOverlay from "../features/game/overlay/PageOverlay";
 
 const Game = () => {
   const [gameBegin, setGameBegin] = useState({ start: false, category: "" });
@@ -15,12 +16,13 @@ const Game = () => {
   }, [activeCategory]);
 
   return (
-    <section>
+    <section className="relative">
       {!gameBegin.start ? (
         <PickCategory setGameBegin={setGameBegin} />
       ) : (
         <GamePage categoryIndex={categoryIndex} />
       )}
+      <PageOverlay />
     </section>
   );
 };
