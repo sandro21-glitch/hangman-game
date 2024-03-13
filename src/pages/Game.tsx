@@ -3,6 +3,7 @@ import PickCategory from "../features/game/pickCategory/PickCategory";
 import GamePage from "../features/game/gamePage/GamePage";
 import { useAppSelector } from "../hooks";
 import PageOverlay from "../features/game/overlay/PageOverlay";
+import Menu from "../features/game/pauseMenu/Menu";
 
 const Game = () => {
   const [gameBegin, setGameBegin] = useState({ start: false, category: "" });
@@ -22,6 +23,7 @@ const Game = () => {
       ) : (
         <GamePage categoryIndex={categoryIndex} />
       )}
+      <Menu />
       <PageOverlay />
     </section>
   );
