@@ -18,7 +18,7 @@ const LettersBoard = () => {
   const isDisabled = (char: string) => disabledButtons[char];
 
   return (
-    <div className="flex gap-5 flex-wrap justify-center items-center">
+    <div className="flex gap-5 flex-wrap justify-center items-center select-none">
       {alphabetArray.map((a, index) => {
         return (
           <button
