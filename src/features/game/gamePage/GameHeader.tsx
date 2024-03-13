@@ -1,11 +1,20 @@
 import menuLogo from "/assets/menu.svg";
 import heart from "/assets/heart.svg";
-const GameHeader = () => {
+
+type GameHeaderTypes = {
+  setIsMenuOpen: (isOpen: boolean) => void;
+};
+
+const GameHeader = ({ setIsMenuOpen }: GameHeaderTypes) => {
   return (
     <header className="py-10">
       <nav className="flex items-center justify-between">
         <div className="flex items-center gap-10">
-          <button className="button-gradient h-[5.5rem] w-[5.5rem] inset--4 rounded-full flex justify-center items-center">
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen(true)}
+            className="button-gradient h-[5.5rem] w-[5.5rem] inset--4 rounded-full flex justify-center items-center"
+          >
             <img src={menuLogo} alt="menu" />
           </button>
           <h2 className="text-[5rem] text-white font-bold tracking-wider select-none">
