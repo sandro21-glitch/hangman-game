@@ -26,7 +26,7 @@ const Word = ({ categoryIndex }: WordTypes) => {
                   key={charIndex}
                   className={`bg-primary-blue max-w-[7rem] max-h-[6rem] m-1 p-[3.5rem]
                     rounded-[2rem] inset--3 inline-flex items-center justify-center text-[4rem] ${
-                      isCharUsed ? "text-white" : ""
+                      isCharUsed ? "text-white opacity-100" : "opacity-[40%]"
                     }`}
                 >
                   {isCharUsed ? char : ""}
@@ -40,7 +40,7 @@ const Word = ({ categoryIndex }: WordTypes) => {
   };
 
   return (
-    <div className=" mt-[3rem] mb-[5rem] flex justify-center flex-wrap items-center">
+    <div className=" mt-[3rem] mb-[5rem] flex justify-center flex-wrap">
       {renderWord()}
     </div>
   );
