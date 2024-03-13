@@ -40,7 +40,7 @@ const Word = ({ categoryIndex }: WordTypes) => {
   };
 
   return (
-    <div className=" mt-[3rem] mb-[5rem] flex justify-center flex-wrap">
+    <div className="mt-[3rem] mb-[5rem] flex justify-center flex-wrap select-none">
       {renderWord()}
     </div>
   );
