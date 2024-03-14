@@ -1,4 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../../../hooks";
+import useSound from "../../../hooks/useSound";
 import { setActiveCategoryList } from "../hangmanSlice";
 type CategoriesListProps = {
   setGameBegin: React.Dispatch<
@@ -8,10 +9,12 @@ type CategoriesListProps = {
 
 const CategoriesList = ({ setGameBegin }: CategoriesListProps) => {
   const dispatch = useAppDispatch();
+  const { playSound } = useSound();
   const { categoryNames } = useAppSelector((store) => store.game);
   const handleCategoryClick = (category: string) => {
     dispatch(setActiveCategoryList(category));
     setGameBegin((prev) => ({ ...prev, category: category, start: true }));
+    playSound();
   };
   return (
     <ul className="mt-10 flex flex-col md:flex-row items-center justify-center flex-wrap gap-5">
