@@ -4,27 +4,35 @@ import GamePage from "../features/game/gamePage/GamePage";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import PageOverlay from "../features/game/overlay/PageOverlay";
 import Menu from "../features/game/pauseMenu/Menu";
-import { setActiveWord } from "../features/game/hangmanSlice";
+import { checkWin, setActiveWord } from "../features/game/hangmanSlice";
 
 const Game = () => {
   const [gameBegin, setGameBegin] = useState({ start: false, category: "" });
-  const [categoryIndex, setCategoryIndex] = useState<number | null>(null); // Change to null
-  const { activeCategory, health } = useAppSelector((store) => store.game);
+  const [categoryIndex, setCategoryIndex] = useState<number | null>(null);
+  const { activeCategory, health, usedChars } = useAppSelector(
+    (store) => store.game
+  );
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
+  const setRandomCategoryIndexIfNeeded = () => {
     if (activeCategory && activeCategory.length > 0 && categoryIndex === null) {
       const randomIndex = Math.floor(Math.random() * activeCategory.length);
       setCategoryIndex(randomIndex);
     }
+  };
+  useEffect(() => {
+    setRandomCategoryIndexIfNeeded();
   }, [activeCategory, categoryIndex]);
 
   useEffect(() => {
     if (categoryIndex !== null) {
       dispatch(setActiveWord(categoryIndex));
     }
-  }, [categoryIndex, dispatch]);
+  }, [categoryIndex, dispatch, gameBegin.start]);
+
+  useEffect(() => {
+    dispatch(checkWin());
+  }, [usedChars, dispatch]);
 
   return (
     <section className="relative">
@@ -38,6 +46,7 @@ const Game = () => {
           title="Paused"
           setIsMenuOpen={setIsMenuOpen}
           setGameBegin={setGameBegin}
+          setCategoryIndex={setCategoryIndex}
         />
       )}
       {health === 0 && (
@@ -45,6 +54,7 @@ const Game = () => {
           title="You Lose"
           setIsMenuOpen={setIsMenuOpen}
           setGameBegin={setGameBegin}
+          setCategoryIndex={setCategoryIndex}
         />
       )}
       <PageOverlay />
