@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { useAppDispatch } from "../../../hooks";
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
 import { setClickedChar } from "../hangmanSlice";
 
 const LettersBoard = () => {
+  const { usedChars } = useAppSelector((store) => store.game);
   const [disabledButtons, setDisabledButtons] = useState<{
     [key: string]: boolean;
   }>({});
@@ -17,6 +18,11 @@ const LettersBoard = () => {
 
   const isDisabled = (char: string) => disabledButtons[char];
 
+  useEffect(() => {
+    if (usedChars.length === 0) {
+      setDisabledButtons({});
+    }
+  }, [usedChars]);
   return (
     <div className="flex gap-5 flex-wrap justify-center items-center select-none">
       {alphabetArray.map((a, index) => {
