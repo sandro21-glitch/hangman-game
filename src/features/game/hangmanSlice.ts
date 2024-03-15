@@ -13,6 +13,7 @@ export interface HangmanState {
   activeCategory: { name: string; selected: boolean }[];
   usedChars: string[];
   health: number;
+  win: boolean;
 }
 
 const initialState: HangmanState = {
@@ -21,6 +22,7 @@ const initialState: HangmanState = {
   activeCategory: [],
   usedChars: [],
   health: 100,
+  win: false,
 };
 export const counterSlice = createSlice({
   name: "hangman",
@@ -45,13 +47,13 @@ export const counterSlice = createSlice({
       }
     },
     setClickedChar: (state, action: PayloadAction<string>) => {
-      const char = action.payload;
+      const char = action.payload.toLowerCase();
       const activeWord = state.activeCategory.find(
         (active) => active.selected === true
       );
 
       if (activeWord) {
-        const activeWordChars = activeWord.name.split("");
+        const activeWordChars = activeWord.name.toLowerCase().split("");
         if (!activeWordChars.includes(char)) {
           state.health -= 12.5;
         }
@@ -61,6 +63,27 @@ export const counterSlice = createSlice({
     resetGame: (state) => {
       state.activeCategory = [];
       state.usedChars = [];
+      state.health = 100;
+      state.win = false;
+    },
+    resetHealth: (state) => {
+      state.health = 100;
+      state.usedChars = [];
+      state.win = false;
+    },
+    checkWin: (state) => {
+      const { usedChars, activeCategory } = state;
+      const selectedWord = activeCategory.find((word) => word.selected);
+
+      if (selectedWord) {
+        const selectedWordChars = selectedWord.name.split("");
+        const isAllCharsFound = selectedWordChars.every((char) =>
+          usedChars.some(
+            (usedChar) => usedChar.toLowerCase() === char.toLowerCase()
+          )
+        );
+        state.win = isAllCharsFound;
+      }
     },
   },
 });
@@ -70,6 +93,8 @@ export const {
   setClickedChar,
   resetGame,
   setActiveWord,
+  resetHealth,
+  checkWin,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;
