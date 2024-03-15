@@ -45,7 +45,18 @@ export const counterSlice = createSlice({
       }
     },
     setClickedChar: (state, action: PayloadAction<string>) => {
-      state.usedChars.push(action.payload);
+      const char = action.payload;
+      const activeWord = state.activeCategory.find(
+        (active) => active.selected === true
+      );
+
+      if (activeWord) {
+        const activeWordChars = activeWord.name.split("");
+        if (!activeWordChars.includes(char)) {
+          state.health -= 12.5;
+        }
+        state.usedChars.push(action.payload);
+      }
     },
     resetGame: (state) => {
       state.activeCategory = [];
