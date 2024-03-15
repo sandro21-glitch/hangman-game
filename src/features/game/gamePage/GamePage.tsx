@@ -3,7 +3,7 @@ import LettersBoard from "./LettersBoard";
 import Word from "./Word";
 
 type GamePageTypes = {
-  categoryIndex: number;
+  categoryIndex: number | null;
   setIsMenuOpen: (isOpen: boolean) => void;
 };
 
