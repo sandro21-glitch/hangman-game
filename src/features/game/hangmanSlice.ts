@@ -12,6 +12,7 @@ export interface HangmanState {
   categoryNames: string[];
   activeCategory: { name: string; selected: boolean }[];
   usedChars: string[];
+  health: number;
 }
 
 const initialState: HangmanState = {
@@ -19,6 +20,7 @@ const initialState: HangmanState = {
   categoryNames: Object.keys(data.categories),
   activeCategory: [],
   usedChars: [],
+  health: 100,
 };
 export const counterSlice = createSlice({
   name: "hangman",
@@ -28,11 +30,17 @@ export const counterSlice = createSlice({
       const categoryName = action.payload;
       const { categories } = state;
 
-      // check if categoryName is a key in categories
       if (categories.hasOwnProperty(categoryName)) {
-        state.activeCategory = categories[categoryName].map((item) => ({
-          name: item.name,
-          selected: item.selected,
+        state.activeCategory = categories[categoryName];
+      }
+    },
+    setActiveWord: (state, action: PayloadAction<number>) => {
+      const index = action.payload;
+
+      if (index >= 0 && index < state.activeCategory.length) {
+        state.activeCategory = state.activeCategory.map((category, i) => ({
+          ...category,
+          selected: i === index,
         }));
       }
     },
@@ -46,7 +54,11 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { setActiveCategoryList, setClickedChar, resetGame } =
-  counterSlice.actions;
+export const {
+  setActiveCategoryList,
+  setClickedChar,
+  resetGame,
+  setActiveWord,
+} = counterSlice.actions;
 
 export default counterSlice.reducer;
