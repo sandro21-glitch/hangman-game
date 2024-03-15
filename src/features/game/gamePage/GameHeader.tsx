@@ -1,6 +1,7 @@
 import menuLogo from "/assets/menu.svg";
 import heart from "/assets/heart.svg";
 import useSound from "../../../hooks/useSound";
+import { useAppSelector } from "../../../hooks";
 
 type GameHeaderTypes = {
   setIsMenuOpen: (isOpen: boolean) => void;
@@ -8,6 +9,7 @@ type GameHeaderTypes = {
 
 const GameHeader = ({ setIsMenuOpen }: GameHeaderTypes) => {
   const { playSound } = useSound();
+  const { health } = useAppSelector((store) => store.game);
   const handleOpenMenu = () => {
     setIsMenuOpen(true);
     playSound();
@@ -29,7 +31,10 @@ const GameHeader = ({ setIsMenuOpen }: GameHeaderTypes) => {
         </div>
         <ul className="flex items-center gap-10">
           <li className="w-[15rem] h-fit py-[.5rem] px-[.5rem] bg-white rounded-full">
-            <span className="block w-full h-[.8rem] bg-[#261676] transition-all ease-in duration-150 rounded-full"></span>
+            <span
+              style={{ width: `${health}%` }}
+              className="block w-full h-[.8rem] bg-[#261676] transition-all ease-in duration-150 rounded-full"
+            ></span>
           </li>
           <li>
             <img src={heart} alt="heart icon" />
