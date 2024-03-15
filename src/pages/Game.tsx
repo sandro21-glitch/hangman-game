@@ -1,21 +1,30 @@
 import { useEffect, useState } from "react";
 import PickCategory from "../features/game/pickCategory/PickCategory";
 import GamePage from "../features/game/gamePage/GamePage";
-import { useAppSelector } from "../hooks";
+import { useAppDispatch, useAppSelector } from "../hooks";
 import PageOverlay from "../features/game/overlay/PageOverlay";
 import Menu from "../features/game/pauseMenu/Menu";
+import { setActiveWord } from "../features/game/hangmanSlice";
 
 const Game = () => {
   const [gameBegin, setGameBegin] = useState({ start: false, category: "" });
-  const [categoryIndex, setCategoryIndex] = useState<number>(0);
+  const [categoryIndex, setCategoryIndex] = useState<number | null>(null); // Change to null
   const { activeCategory } = useAppSelector((store) => store.game);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
-    if (activeCategory && activeCategory.length > 0) {
+    if (activeCategory && activeCategory.length > 0 && categoryIndex === null) {
       const randomIndex = Math.floor(Math.random() * activeCategory.length);
       setCategoryIndex(randomIndex);
     }
-  }, [activeCategory]);
+  }, [activeCategory, categoryIndex]);
+
+  useEffect(() => {
+    if (categoryIndex !== null) {
+      dispatch(setActiveWord(categoryIndex));
+    }
+  }, [categoryIndex, dispatch]);
 
   return (
     <section className="relative">
