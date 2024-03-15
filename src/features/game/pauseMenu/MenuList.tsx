@@ -1,14 +1,21 @@
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../../hooks";
-import { resetGame } from "../hangmanSlice";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { resetGame, resetHealth } from "../hangmanSlice";
 import useSound from "../../../hooks/useSound";
+import setRandomCategoryIndexIfNeeded from "../../../utils/gameUtils";
 
 type MenuListTypes = {
   setIsMenuOpen: (isOpen: boolean) => void;
   setGameBegin: (value: { start: boolean; category: string }) => void;
+  setCategoryIndex: (index: number) => void;
 };
 
-const MenuList = ({ setIsMenuOpen, setGameBegin }: MenuListTypes) => {
+const MenuList = ({
+  setIsMenuOpen,
+  setGameBegin,
+  setCategoryIndex,
+}: MenuListTypes) => {
+  const { health, activeCategory } = useAppSelector((store) => store.game);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { playSound } = useSound();
@@ -21,11 +28,20 @@ const MenuList = ({ setIsMenuOpen, setGameBegin }: MenuListTypes) => {
     setGameBegin({ start: false, category: "" });
     setIsMenuOpen(false);
     dispatch(resetGame());
+    dispatch(resetHealth());
+    setRandomCategoryIndexIfNeeded(activeCategory, setCategoryIndex);
     playSound();
   };
   const handleContinue = () => {
-    setIsMenuOpen(false);
-    playSound();
+    if (health === 0) {
+      dispatch(resetHealth());
+      setRandomCategoryIndexIfNeeded(activeCategory, setCategoryIndex);
+      setIsMenuOpen(false);
+      playSound();
+    } else {
+      setIsMenuOpen(false);
+      playSound();
+    }
   };
 
   return (
@@ -39,7 +55,7 @@ const MenuList = ({ setIsMenuOpen, setGameBegin }: MenuListTypes) => {
         Continue
       </li>
       <li
-        onClick={() => handleResetGame()}
+        onClick={handleResetGame}
         className="bg-primary-blue rounded-[40px] cursor-pointer px-[4rem] py-[.8rem]
        inset--3 border-none text-[2rem] text-white uppercase tracking-wider text-center
         hover:bg-blue-500 transition-all ease-in duration-150"
