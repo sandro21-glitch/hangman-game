@@ -1,12 +1,12 @@
 import { useAppSelector } from "../../../hooks";
 
 type WordTypes = {
-  categoryIndex: number;
+  categoryIndex: number | null;
 };
 
 const Word = ({ categoryIndex }: WordTypes) => {
   const { activeCategory, usedChars } = useAppSelector((store) => store.game);
-  const word = activeCategory[categoryIndex].name;
+  const word = categoryIndex !== null ? activeCategory[categoryIndex].name : "";
 
   const chars = usedChars.map((char) => char.toLowerCase());
 
