@@ -9,7 +9,7 @@ import { setActiveWord } from "../features/game/hangmanSlice";
 const Game = () => {
   const [gameBegin, setGameBegin] = useState({ start: false, category: "" });
   const [categoryIndex, setCategoryIndex] = useState<number | null>(null); // Change to null
-  const { activeCategory } = useAppSelector((store) => store.game);
+  const { activeCategory, health } = useAppSelector((store) => store.game);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 
@@ -34,7 +34,18 @@ const Game = () => {
         <GamePage categoryIndex={categoryIndex} setIsMenuOpen={setIsMenuOpen} />
       )}
       {isMenuOpen && (
-        <Menu setIsMenuOpen={setIsMenuOpen} setGameBegin={setGameBegin} />
+        <Menu
+          title="Paused"
+          setIsMenuOpen={setIsMenuOpen}
+          setGameBegin={setGameBegin}
+        />
+      )}
+      {health === 0 && (
+        <Menu
+          title="You Lose"
+          setIsMenuOpen={setIsMenuOpen}
+          setGameBegin={setGameBegin}
+        />
       )}
       <PageOverlay />
     </section>
