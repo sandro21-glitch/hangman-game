@@ -78,7 +78,12 @@ export const counterSlice = createSlice({
       const selectedWord = activeCategory.find((word) => word.selected);
 
       if (selectedWord) {
-        const selectedWordChars = selectedWord.name.split("");
+        let selectedWordChars = selectedWord.name.split("");
+        // remove empty strings from selectedWordChars
+        selectedWordChars = selectedWordChars.filter(
+          (char) => char.trim() !== ""
+        );
+
         const isAllCharsFound = selectedWordChars.every((char) =>
           usedChars.some(
             (usedChar) => usedChar.toLowerCase() === char.toLowerCase()
@@ -87,9 +92,9 @@ export const counterSlice = createSlice({
         state.win = isAllCharsFound;
       }
     },
-    toggleMusic: (state,action:PayloadAction<boolean>) => {
-      state.music = action.payload
-    }
+    toggleMusic: (state, action: PayloadAction<boolean>) => {
+      state.music = action.payload;
+    },
   },
 });
 
@@ -100,7 +105,7 @@ export const {
   setActiveWord,
   resetHealth,
   checkWin,
-  toggleMusic
+  toggleMusic,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;
