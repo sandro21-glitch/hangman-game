@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
 import { resetGame, resetHealth } from "../hangmanSlice";
 import useSound from "../../../hooks/useSound";
-import setRandomCategoryIndexIfNeeded from "../../../utils/gameUtils";
+import setRandomCategoryIndex from "../../../utils/gameUtils";
 
 type MenuListTypes = {
   setIsMenuOpen: (isOpen: boolean) => void;
@@ -29,18 +29,18 @@ const MenuList = ({
     setIsMenuOpen(false);
     dispatch(resetGame());
     dispatch(resetHealth());
-    setRandomCategoryIndexIfNeeded(activeCategory, setCategoryIndex);
+    setRandomCategoryIndex(activeCategory, setCategoryIndex);
     playSound();
   };
   const handleContinue = () => {
     if (health === 0) {
       dispatch(resetHealth());
-      setRandomCategoryIndexIfNeeded(activeCategory, setCategoryIndex);
+      setRandomCategoryIndex(activeCategory, setCategoryIndex);
       setIsMenuOpen(false);
       playSound();
     } else if (win) {
       dispatch(resetHealth());
-      setRandomCategoryIndexIfNeeded(activeCategory, setCategoryIndex);
+      setRandomCategoryIndex(activeCategory, setCategoryIndex);
       setIsMenuOpen(false);
       playSound();
     } else {
