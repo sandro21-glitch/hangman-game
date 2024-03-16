@@ -16,7 +16,7 @@ const Word = ({ categoryIndex }: WordTypes) => {
     return (
       <>
         {words.map((wordPart, index) => (
-          <div key={index} className="flex mr-[7rem]">
+          <div key={index} className="flex mr-[2rem] md:mr-[3rem] lg:mr-[6rem]">
             {wordPart.split("").map((char, charIndex) => {
               const isCharUsed = chars.includes(char.toLowerCase());
               return char === " " ? (
