@@ -20,17 +20,26 @@ const Word = ({ categoryIndex }: WordTypes) => {
             {wordPart.split("").map((char, charIndex) => {
               const isCharUsed = chars.includes(char.toLowerCase());
               return char === " " ? (
-                <span key={charIndex}></span>
+                <div key={charIndex}></div>
               ) : (
-                <span
+                <div
                   key={charIndex}
-                  className={`bg-primary-blue max-w-[7rem] max-h-[6rem] m-1 p-[3.5rem]
-                    rounded-[2rem] inset--3 inline-flex items-center justify-center text-[4rem] ${
+                  className={`bg-primary-blue
+                    w-[2.5rem] 
+                    h-[3.5rem] 
+                    sm:w-[3.5rem]
+                    sm:h-[4.5rem]
+                    md:w-[4.5rem]
+                    md:h-[5.5rem]
+                    lg:w-[6rem]
+                    lg:h-[6rem]
+                    m-1 
+                    rounded-[2rem] inset--3 flex items-center justify-center text-[1.5rem] lg:text-[4rem] ${
                       isCharUsed ? "text-white opacity-100" : "opacity-[40%]"
                     }`}
                 >
                   {isCharUsed ? char : ""}
-                </span>
+                </div>
               );
             })}
           </div>
@@ -40,7 +49,7 @@ const Word = ({ categoryIndex }: WordTypes) => {
   };
 
   return (
-    <div className="mt-[3rem] mb-[5rem] flex justify-center flex-wrap select-none">
+    <div className="mt-[3rem] mb-[50%] lg:mb-[5rem] flex justify-center flex-wrap select-none">
       {renderWord()}
     </div>
   );
