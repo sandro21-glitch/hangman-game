@@ -15,7 +15,7 @@ const MenuList = ({
   setGameBegin,
   setCategoryIndex,
 }: MenuListTypes) => {
-  const { health, activeCategory } = useAppSelector((store) => store.game);
+  const { health, activeCategory, win } = useAppSelector((store) => store.game);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { playSound } = useSound();
@@ -34,6 +34,11 @@ const MenuList = ({
   };
   const handleContinue = () => {
     if (health === 0) {
+      dispatch(resetHealth());
+      setRandomCategoryIndexIfNeeded(activeCategory, setCategoryIndex);
+      setIsMenuOpen(false);
+      playSound();
+    } else if (win) {
       dispatch(resetHealth());
       setRandomCategoryIndexIfNeeded(activeCategory, setCategoryIndex);
       setIsMenuOpen(false);
