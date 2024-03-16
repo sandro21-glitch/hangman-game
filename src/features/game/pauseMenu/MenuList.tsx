@@ -20,8 +20,8 @@ const MenuList = ({
   const navigate = useNavigate();
   const { playSound } = useSound();
   const handleQuitGame = () => {
-    navigate("/");
     dispatch(resetGame());
+    navigate("/");
     playSound();
   };
   const handleResetGame = () => {
