@@ -32,9 +32,9 @@ const LettersBoard = () => {
             disabled={isDisabled(a)}
             onClick={() => handleAddChar(a)}
             key={index}
-            className={`w-[7rem] h-[5rem] bg-white rounded-[1rem]
+            className={`w-[2.5rem] h-[4rem] sm:w-[3.5rem] sm:h-[4rem] lg:w-[7rem] lg:h-[5rem] bg-white rounded-[1rem]
              flex justify-center items-center text-[#261676]
-              text-[3rem] font-medium  transition-colors ease-in duration-150
+              text-[1.5rem] md:text-[2rem] lg:text-[2.5rem] font-medium  transition-colors ease-in duration-150
               ${
                 isDisabled(a)
                   ? "opacity-50 cursor-not-allowed"
