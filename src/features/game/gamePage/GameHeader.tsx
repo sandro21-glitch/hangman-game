@@ -23,7 +23,7 @@ const GameHeader = ({ setIsMenuOpen }: GameHeaderTypes) => {
             onClick={handleOpenMenu}
             className="button-gradient w-[3rem] h-[3rem] lg:h-[5.5rem] lg:w-[5.5rem] inset--4 rounded-full flex justify-center items-center"
           >
-            <img src={menuLogo} alt="menu" className="w-[1rem]" />
+            <img src={menuLogo} alt="menu" className="w-[1rem] md:w-auto" />
           </button>
           <h2 className="text-[1.7rem] md:text-[5rem] text-white font-bold tracking-wider select-none">
             Movies
