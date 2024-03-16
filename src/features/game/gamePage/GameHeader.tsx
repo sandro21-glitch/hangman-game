@@ -15,29 +15,29 @@ const GameHeader = ({ setIsMenuOpen }: GameHeaderTypes) => {
     playSound();
   };
   return (
-    <header className="py-10">
+    <header className="py-5 lg:py-10">
       <nav className="flex items-center justify-between">
-        <div className="flex items-center gap-10">
+        <div className="flex items-center gap-2 lg:gap-10">
           <button
             type="button"
             onClick={handleOpenMenu}
-            className="button-gradient h-[5.5rem] w-[5.5rem] inset--4 rounded-full flex justify-center items-center"
+            className="button-gradient w-[3rem] h-[3rem] lg:h-[5.5rem] lg:w-[5.5rem] inset--4 rounded-full flex justify-center items-center"
           >
-            <img src={menuLogo} alt="menu" />
+            <img src={menuLogo} alt="menu" className="w-[1rem]" />
           </button>
-          <h2 className="text-[5rem] text-white font-bold tracking-wider select-none">
+          <h2 className="text-[1.7rem] md:text-[5rem] text-white font-bold tracking-wider select-none">
             Movies
           </h2>
         </div>
-        <ul className="flex items-center gap-10">
-          <li className="w-[15rem] h-fit py-[.5rem] px-[.5rem] bg-white rounded-full">
+        <ul className="flex items-center gap-2 lg:gap-7">
+          <li className="w-[8rem] lg:w-[15rem] h-fit py-[.3rem] px-[.3rem] md:py-[.5rem] md:px-[.5rem] bg-white rounded-full">
             <span
               style={{ width: `${health}%` }}
               className="block w-full h-[.8rem] bg-[#261676] transition-all ease-in duration-150 rounded-full"
             ></span>
           </li>
           <li>
-            <img src={heart} alt="heart icon" />
+            <img src={heart} alt="heart icon" className="w-[2rem] md:w-[3rem] lg:w-full h-auto" />
           </li>
         </ul>
       </nav>
