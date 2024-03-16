@@ -24,7 +24,7 @@ const SoundButton = () => {
       <button
         type="button"
         onClick={handleStartMusic}
-        className="absolute right-5 sm:right-[7rem] top-10 bg-primary-blue p-[.3rem] rounded-md inset--3"
+        className="absolute sm:right-[7rem] right-5 top-5 sm:top-10 bg-primary-blue p-[.3rem] rounded-md inset--3"
       >
         <img src={music ? soundLogo : soundOffLogo} alt="sound logo" />
       </button>
