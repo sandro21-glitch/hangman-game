@@ -22,3 +22,14 @@
   -webkit-text-stroke-color: #243041;
   z-index: -1;
 }
+
+@media screen and (max-width: 1024px) {
+  .title {
+    font-size: 5rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+}
