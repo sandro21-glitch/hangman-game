@@ -19,7 +19,7 @@ const Menu = ({
     <div className="absolute inset-0 h-screen w-full z-[1] flex justify-center items-center select-none">
       <PageOverlay />
       <div className="w-[37rem] h-[27rem] gradient-bg inset--1 rounded-[72px] relative flex justify-center items-center">
-        <header className="absolute top-[-20%] left-0 right-0 mx-auto z-[1]">
+        <header className="absolute top-[-10%] md:top-[-15%] lg:top-[-20%] left-0 right-0 mx-auto z-[1]">
           <SectionTitle text={title} />
         </header>
         <MenuList
