@@ -6,8 +6,9 @@ type WordTypes = {
 
 const Word = ({ categoryIndex }: WordTypes) => {
   const { activeCategory, usedChars } = useAppSelector((store) => store.game);
-  const word = categoryIndex !== null ? activeCategory[categoryIndex].name : "";
-
+  const wordWithApostrophe =
+    categoryIndex !== null ? activeCategory[categoryIndex].name : "";
+  const word = wordWithApostrophe.replace("'", "");
   const chars = usedChars.map((char) => char.toLowerCase());
 
   const renderWord = () => {
