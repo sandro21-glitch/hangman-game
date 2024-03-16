@@ -2,6 +2,9 @@ import HowToPlayBtn from "../features/welcomePage/HowToPlayBtn";
 import PlayBtn from "../features/welcomePage/PlayBtn";
 import SoundButton from "../features/welcomePage/SoundButton";
 import logo from "/assets/logo-desktop.svg";
+
+
+
 const WelcomePage = () => {
   return (
     <section className="flex-center min-h-screen relative">
