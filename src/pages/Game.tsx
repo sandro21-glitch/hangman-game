@@ -32,7 +32,6 @@ const Game = () => {
 
   useEffect(() => {
     dispatch(checkWin());
-    console.log(win);
   }, [usedChars, dispatch]);
 
   return (
