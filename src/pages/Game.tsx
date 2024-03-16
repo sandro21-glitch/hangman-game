@@ -9,7 +9,7 @@ import { checkWin, setActiveWord } from "../features/game/hangmanSlice";
 const Game = () => {
   const [gameBegin, setGameBegin] = useState({ start: false, category: "" });
   const [categoryIndex, setCategoryIndex] = useState<number | null>(null);
-  const { activeCategory, health, usedChars } = useAppSelector(
+  const { activeCategory, health, usedChars, win } = useAppSelector(
     (store) => store.game
   );
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -52,6 +52,14 @@ const Game = () => {
       {health === 0 && (
         <Menu
           title="You Lose"
+          setIsMenuOpen={setIsMenuOpen}
+          setGameBegin={setGameBegin}
+          setCategoryIndex={setCategoryIndex}
+        />
+      )}
+      {win && (
+        <Menu
+          title="You Win"
           setIsMenuOpen={setIsMenuOpen}
           setGameBegin={setGameBegin}
           setCategoryIndex={setCategoryIndex}
