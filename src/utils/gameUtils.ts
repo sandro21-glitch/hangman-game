@@ -3,7 +3,7 @@ interface ActiveCategoryTypes {
   selected: boolean;
 }
 
-const setRandomCategoryIndexIfNeeded = (
+const setRandomCategoryIndex = (
   activeCategory: ActiveCategoryTypes[],
   setCategoryIndex: (index: number) => void
 ) => {
@@ -14,4 +14,4 @@ const setRandomCategoryIndexIfNeeded = (
   }
 };
 
-export default setRandomCategoryIndexIfNeeded;
+export default setRandomCategoryIndex;
