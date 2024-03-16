@@ -14,6 +14,7 @@ export interface HangmanState {
   usedChars: string[];
   health: number;
   win: boolean;
+  music: boolean;
 }
 
 const initialState: HangmanState = {
@@ -23,6 +24,7 @@ const initialState: HangmanState = {
   usedChars: [],
   health: 100,
   win: false,
+  music: false,
 };
 export const counterSlice = createSlice({
   name: "hangman",
@@ -85,6 +87,9 @@ export const counterSlice = createSlice({
         state.win = isAllCharsFound;
       }
     },
+    toggleMusic: (state,action:PayloadAction<boolean>) => {
+      state.music = action.payload
+    }
   },
 });
 
@@ -95,6 +100,7 @@ export const {
   setActiveWord,
   resetHealth,
   checkWin,
+  toggleMusic
 } = counterSlice.actions;
 
 export default counterSlice.reducer;
