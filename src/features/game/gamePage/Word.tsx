@@ -25,15 +25,15 @@ const Word = ({ categoryIndex }: WordTypes) => {
                 <div
                   key={charIndex}
                   className={`bg-primary-blue
-                    w-[2.5rem] 
-                    h-[3.5rem] 
-                    sm:w-[3.5rem]
-                    sm:h-[4.5rem]
-                    md:w-[4.5rem]
-                    md:h-[5.5rem]
+                    w-[2rem] 
+                    h-[3rem] 
+                    sm:w-[3rem]
+                    sm:h-[4rem]
+                    md:w-[3rem]
+                    md:h-[4rem]
                     lg:w-[6rem]
                     lg:h-[6rem]
-                    m-1 
+                    md:mx-1
                     rounded-[2rem] inset--3 flex items-center justify-center text-[1.5rem] lg:text-[4rem] ${
                       isCharUsed ? "text-white opacity-100" : "opacity-[40%]"
                     }`}
