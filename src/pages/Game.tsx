@@ -32,7 +32,7 @@ const Game = () => {
 
   useEffect(() => {
     dispatch(checkWin());
-  }, [usedChars, dispatch]);
+  }, [usedChars, dispatch,win]);
 
   return (
     <section className="relative">
