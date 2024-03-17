@@ -16,7 +16,7 @@ const PlayBtn = () => {
     cursor-pointer outline-none border-none
   "
     >
-      <img src={playIcon} alt="play icon" className="bg-none" />
+      <img loading="lazy" src={playIcon} alt="play icon" className="bg-none" />
     </button>
   );
 };
