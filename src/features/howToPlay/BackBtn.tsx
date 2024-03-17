@@ -17,6 +17,7 @@ const BackBtn = () => {
     >
       <img
         src={backLogo}
+        loading="lazy"
         alt="back icon"
         className="bg-none w-[1.5rem] h-[1.5rem] md:w-auto md:h-auto"
       />
