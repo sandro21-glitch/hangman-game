@@ -30,14 +30,18 @@ const GameHeader = ({ setIsMenuOpen }: GameHeaderTypes) => {
           </h2>
         </div>
         <ul className="flex items-center gap-2 lg:gap-7">
-          <li className="w-[8rem] lg:w-[15rem] h-fit py-[.3rem] px-[.3rem] md:py-[.5rem] md:px-[.5rem] bg-white rounded-full">
+          <li className="w-[8rem] lg:w-[15rem] h-fit py-[.2rem] lg:py-[.3rem] px-[.3rem] md:py-[.5rem] md:px-[.5rem] bg-white rounded-full">
             <span
               style={{ width: `${health}%` }}
-              className="block w-full h-[.8rem] bg-[#261676] transition-all ease-in duration-150 rounded-full"
+              className="block w-full h-[.6rem] lg:h-[.8rem] bg-[#261676] transition-all ease-in duration-150 rounded-full"
             ></span>
           </li>
           <li>
-            <img src={heart} alt="heart icon" className="w-[2rem] md:w-[3rem] lg:w-full h-auto" />
+            <img
+              src={heart}
+              alt="heart icon"
+              className="w-[2rem] md:w-[3rem] lg:w-full h-auto"
+            />
           </li>
         </ul>
       </nav>
