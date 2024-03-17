@@ -26,7 +26,11 @@ const SoundButton = () => {
         onClick={handleStartMusic}
         className="absolute sm:right-[7rem] right-5 top-5 sm:top-10 bg-primary-blue p-[.3rem] rounded-md inset--3"
       >
-        <img src={music ? soundLogo : soundOffLogo} alt="sound logo" />
+        <img
+          loading="lazy"
+          src={music ? soundLogo : soundOffLogo}
+          alt="sound logo"
+        />
       </button>
       <audio ref={audioRef} loop>
         <source src={musicSound} type="audio/mpeg" />
