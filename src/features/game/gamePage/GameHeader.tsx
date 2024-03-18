@@ -9,7 +9,7 @@ type GameHeaderTypes = {
 
 const GameHeader = ({ setIsMenuOpen }: GameHeaderTypes) => {
   const { playSound } = useSound();
-  const { health } = useAppSelector((store) => store.game);
+  const { health, categoryName } = useAppSelector((store) => store.game);
   const handleOpenMenu = () => {
     setIsMenuOpen(true);
     playSound();
@@ -31,7 +31,7 @@ const GameHeader = ({ setIsMenuOpen }: GameHeaderTypes) => {
             />
           </button>
           <h2 className="text-[1.7rem] md:text-[5rem] text-white font-bold tracking-wider select-none">
-            Movies
+            {categoryName}
           </h2>
         </div>
         <ul className="flex items-center gap-2 lg:gap-7">
