@@ -15,6 +15,7 @@ export interface HangmanState {
   health: number;
   win: boolean;
   music: boolean;
+  categoryName: string;
 }
 
 const initialState: HangmanState = {
@@ -25,6 +26,7 @@ const initialState: HangmanState = {
   health: 100,
   win: false,
   music: false,
+  categoryName: "",
 };
 export const counterSlice = createSlice({
   name: "hangman",
@@ -35,6 +37,7 @@ export const counterSlice = createSlice({
       const { categories } = state;
 
       if (categories.hasOwnProperty(categoryName)) {
+        state.categoryName = categoryName;
         state.activeCategory = categories[categoryName];
       }
     },
